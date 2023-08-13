@@ -34,14 +34,13 @@ pipeline {
         stage('Build Module tabletPrivDebug') {
             steps {
                 echo 'Step: Build Module tabletPrivRelease'
-                bat 'gradle clean assemble -PbuildVariant=tabletPrivRelease'
+                bat 'gradle clean assemble'
             }
         }
 
         stage('Move to BuildPath') {
             steps {
                 echo 'Step: Moving build artifacts...'
-                // bat "xcopy /Y /E /I /Q \"%WORKSPACE%\\app\\build\\outputs\\apk\\*\" \"%BuildPath%\\\""
             }
         }
 
