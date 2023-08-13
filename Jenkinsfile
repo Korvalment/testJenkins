@@ -14,14 +14,7 @@ pipeline {
 
 
     stages {
-
-        stage('Clean Gradle Cache') {
-                steps {
-                    echo 'Cleaning Gradle Cache...'
-                    bat './gradlew cleanBuildCache'
-                }
-            }
-
+        
         stage('Checkout') {
             steps {
                 echo 'Step: Git Checkout'
@@ -34,7 +27,7 @@ pipeline {
         stage('Build Module tabletPrivDebug') {
             steps {
                 echo 'Step: Build Module tabletPrivRelease'
-                bat 'gradle clean assemble'
+                bat 'gradle clean build'
             }
         }
 
