@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        Project_Name = "Dobus"
-        BuildPath = "C:\\jenkins-agent\\Build"
-        DeployPath = "C:\\jenkins-agent\\Deploy"
+        Project_Name = "Test"
+   
     }
 
     tools {
         jdk 'Corretto 11.0.20'
-        gradle 'Gradle-6.5'
+        gradle 'Gradle-8.0.2'
     }
 
 
@@ -34,16 +33,10 @@ pipeline {
         stage('Build Module tabletPrivDebug') {
             steps {
                 echo 'Step: Build Module tabletPrivRelease'
-                bat 'gradle clean assemble -PbuildVariant=tabletPrivRelease'
+                bat 'gradle clean build'
             }
         }
 
-        stage('Move to BuildPath') {
-            steps {
-                echo 'Step: Moving build artifacts...'
-                // bat "xcopy /Y /E /I /Q \"%WORKSPACE%\\app\\build\\outputs\\apk\\*\" \"%BuildPath%\\\""
-            }
-        }
 
         stage('Finish') {
             steps {
@@ -59,9 +52,3 @@ pipeline {
     }
 }
 
-// Apply MultiDex configuration
-android {
-    defaultConfig {
-       multiDexEnabled true
-    }
-}
