@@ -24,7 +24,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Step: Git Checkout'
-                checkout scm
                 bat 'java -version'
                 bat 'gradle -version'
             }
