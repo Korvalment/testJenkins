@@ -9,7 +9,7 @@ pipeline {
 
     tools {
         jdk 'Corretto 11.0.20'
-        gradle 'Gradle-6.5'
+
     }
 
 
